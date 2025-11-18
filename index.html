@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Algae Tiles | Urban Carbon Capture</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease;
+            margin-bottom: 1rem;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            font-style: italic;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .prototype-showcase {
+            background: white;
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .prototype-showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A, #4CAF50);
+            background-size: 200% 100%;
+            animation: gradientSlide 3s linear infinite;
+        }
+
+        @keyframes gradientSlide {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+
+        .prototype-image {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            animation: floatImage 6s ease-in-out infinite;
+        }
+
+        @keyframes floatImage {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .prototype-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .idea-section {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        .idea-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .idea-content::before {
+            content: '💡';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 150px;
+            opacity: 0.05;
+        }
+
+        .idea-content h2 {
+            color: #1e3c72;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .idea-content h2::before {
+            content: '🌿';
+            font-size: 2rem;
+        }
+
+        .idea-content p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .key-innovation {
+            background: linear-gradient(135deg, #f1f8e9 0%, #dcedc8 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid #4CAF50;
+            margin-top: 2rem;
+        }
+
+        .key-innovation h3 {
+            color: #2e7d32;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .key-innovation h3::before {
+            content: '⚡';
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .feature-card h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1e3c72;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            margin: 1rem auto;
+            border-radius: 2px;
+            animation: expandLine 2s ease-in-out infinite;
+        }
+
+        @keyframes expandLine {
+            0%, 100% { width: 100px; }
+            50% { width: 150px; }
+        }
+
+        .how-it-works {
+            background: white;
+        }
+
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            position: relative;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .step h4 {
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .step p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .impact-section {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact-section::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(76, 175, 80, 0.1), transparent);
+            top: -250px;
+            right: -250px;
+            animation: moveCircle 15s ease-in-out infinite;
+        }
+
+        @keyframes moveCircle {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-100px, 100px); }
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            color: #4CAF50;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .tech-stack {
+            background: #f9f9f9;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+        }
+
+        .tech-item {
+            background: white;
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .tech-item:hover::before {
+            left: 100%;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        .tech-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-item strong {
+            display: block;
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .tech-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A, #4CAF50);
+            background-size: 200% 100%;
+            animation: gradientSlide 3s linear infinite;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        footer a {
+            color: #8BC34A;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #4CAF50;
+            text-decoration: underline;
+        }
+
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #4CAF50;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .steps {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-particles" id="particles"></div>
+
+    <header>
+        <div class="container">
+            <div class="hero">
+                <h1>🌱 AI-Powered Algae Tiles</h1>
+                <p class="subtitle">Transforming Buildings into Living Carbon Sinks</p>
+                <p class="tagline">Where Nature Meets Innovation</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="idea-section">
+            <div class="container">
+                <div class="idea-content">
+                    <h2>The Big Idea</h2>
+                    <p>
+                        Rapid urbanization has intensified air pollution and CO₂ emissions worldwide, contributing to accelerated global warming and declining air quality. While industrial-scale carbon capture systems exist, they remain costly, energy-intensive, and inaccessible to everyday citizens who rarely have the opportunity to witness or contribute directly to climate mitigation efforts.
+                    </p>
+                    <p>
+                        Our solution bridges this gap by developing <strong>AI-powered algae tiles</strong>—modular, transparent bio-reactive units that can be affixed to building facades or rooftops. These innovative tiles harness the natural power of living algae to absorb atmospheric CO₂ and release oxygen through photosynthesis, effectively turning everyday urban structures into micro carbon sinks.
+                    </p>
+                    <div class="key-innovation">
+                        <h3>What Makes This Revolutionary</h3>
+                        <p>
+                            By combining low-cost materials with IoT-based environmental monitoring and AI-driven optimization, this system offers a <strong>visible, participatory, and sustainable solution</strong> for urban carbon reduction. The tiles don't just capture carbon—they make climate action tangible, allowing communities to see their impact in real-time through an intelligent dashboard that tracks CO₂ absorption, predicts maintenance needs, and visualizes environmental improvements.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">🧬</div>
+                        <h3>Bio-Reactive Technology</h3>
+                        <p>Living algae cultures integrated into transparent, modular tiles that actively perform photosynthesis, absorbing CO₂ and releasing oxygen 24/7.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>AI-Driven Optimization</h3>
+                        <p>Smart algorithms analyze environmental data in real-time to predict performance, optimize growth conditions, and schedule maintenance for maximum carbon capture efficiency.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📡</div>
+                        <h3>IoT Monitoring System</h3>
+                        <p>Arduino Uno-powered sensors continuously track CO₂ levels, humidity, and light intensity, providing live data visualization through an intuitive cloud dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section how-it-works">
+            <div class="container">
+                <h2 class="section-title">How It Works</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>🧪 Algae Cultivation</h4>
+                        <p>Nutrient-rich algae cultures are prepared in sterile, transparent casings optimized for maximum light penetration and photosynthetic activity.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>🔧 Sensor Integration</h4>
+                        <p>Advanced CO₂, humidity, and light sensors are connected to Arduino Uno microcontrollers for continuous environmental monitoring and data collection.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>💻 AI Analysis</h4>
+                        <p>Cloud-based artificial intelligence processes sensor data to optimize growing conditions, predict performance, and generate maintenance alerts.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h4>🌍 Carbon Capture</h4>
+                        <p>Algae continuously absorb atmospheric CO₂ through photosynthesis, converting it into oxygen and biomass while improving local air quality.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section impact-section">
+            <div class="container">
+                <h2 class="section-title">Environmental Impact</h2>
+                <div class="impact-stats">
+                    <div class="stat">
+                        <div class="stat-icon">🌬️</div>
+                        <div class="stat-value">CO₂</div>
+                        <div class="stat-label">Continuous Absorption</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-icon">💨</div>
+                        <div class="stat-value">O₂</div>
+                        <div class="stat-label">Oxygen Production</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-icon">⏰</div>
+                        <div class="stat-value">24/7</div>
+                        <div class="stat-label">Active Monitoring</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-icon">♻️</div>
+                        <div class="stat-value">100%</div>
+                        <div class="stat-label">Sustainable Solution</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section tech-stack">
+            <div class="container">
+                <h2 class="section-title">Technology Components</h2>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <div class="tech-icon">🦠</div>
+                        <strong>Algae Culture</strong>
+                        <p>Living bio-reactor system</p>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">🖥️</div>
+                        <strong>Arduino Uno</strong>
+                        <p>IoT microcontroller</p>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">📊</div>
+                        <strong>CO₂ Sensors</strong>
+                        <p>Real-time tracking</p>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">☁️</div>
+                        <strong>AI Dashboard</strong>
+                        <p>Cloud analytics platform</p>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">💡</div>
+                        <strong>LED System</strong>
+                        <p>Growth optimization</p>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">🔍</div>
+                        <strong>Transparent Casing</strong>
+                        <p>Maximum light penetration</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AI-Powered Algae Tiles Project | Building a Sustainable Future, One Tile at a Time</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                Research Foundation: 
+                <a href="https://www.sciencedirect.com/science/article/abs/pii/S0013935124003013" target="_blank">Goswami et al. 2024</a> | 
+                <a href="https://www.sciencedirect.com/science/article/pii/S2772656821000075" target="_blank">Onyeaka et al. 2021</a> | 
+                <a href="https://www.mdpi.com/2673-5628/4/4/24" target="_blank">Li & Yao 2024</a> | 
+                <a href="https://www.researchgate.net/publication/382751058" target="_blank">Biancha 2024</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            particle.style.animationDelay = Math.random() * 2 + 's';
+            particle.style.animation = `floatParticle ${Math.random() * 10 + 5}s ease-in-out infinite`;
+            particlesContainer.appendChild(particle);
+        }
+
+        // Add floating animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes floatParticle {
+                0%, 100% { transform: translate(0, 0); }
+                25% { transform: translate(20px, -20px); }
+                50% { transform: translate(-20px, -40px); }
+                75% { transform: translate(10px, -20px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
